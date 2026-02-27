@@ -1,38 +1,40 @@
+from funciones import retirar_Dinero
 
 S_inicial = 0
 
-Veces = int(input("Cuantas veces quieres realizar esta operacion"))
-contador = 0
-
-while contador < Veces:
+while True:
     Confir_2 = True
+    #mENU
     print("""
-
         Menu
-
         1.  Consultar Saldo
         2.  Retirar Dinero
         3.  Depósitar Dinero
-
+        4.  Gestion de clave
+        5.  Consulta de movimientos
+        6.  pagos
+        7.  otras operaciones
+        8.  retiro
+        9.  transferir
     """)
-    Pregunta_1 = float(input("¿Cuales operaciones desea realizar el usuario?: "))
+    Pregunta_1 = float(input("¿Cual operaciones desea realizar el usuario?: "))
 
     if Pregunta_1 == 1:
 
         print(f"El Saldo Actual es: {S_inicial}")
-        contador = contador + 1
     elif Pregunta_1 == 2:
+        if S_inicial == 0:
+            Confir_2 = False
+            print("No puede realizar operacion")
+        else:
+            Confir_2 = True
         while Confir_2:
             monto_Reitrar = float(input("Coloque el monto a retirar: "))
             if monto_Reitrar > S_inicial:
                 print("Fondos insuficientes")
             elif monto_Reitrar <= S_inicial:
-                print("Saldo retirado")
-                print("")
-                S_inicial = S_inicial - monto_Reitrar 
-                print(f"Este es el nuevo saldo: {S_inicial}")
+                S_inicial=retirar_Dinero(S_inicial, monto_Reitrar)
                 Confir_2 = False
-                contador = contador + 1
             else:
                 print("monto no valido Coloquelo de Nuevo")
     elif Pregunta_1 == 3:
@@ -44,7 +46,7 @@ while contador < Veces:
                 S_inicial = S_inicial+Monto_Depositar
                 print(f"Saldo Depositado Correctamente, Este es el Nuevo Saldo {S_inicial}")
                 Confir_2 = False
-                contador = contador + 1
+                
     else:
         print("""
               Opción inválida
