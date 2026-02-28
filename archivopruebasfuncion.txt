@@ -1,0 +1,9 @@
+
+/////////
+clave = "9012"
+
+datos = obtener_usuario_por_pin(clave)
+
+print(datos)
+
+////////
