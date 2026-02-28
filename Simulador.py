@@ -1,7 +1,7 @@
 from funciones import retirar_Dinero
 
 S_inicial = 0
-
+moviientos = list
 while True:
     Confir_2 = True
     #mENU
