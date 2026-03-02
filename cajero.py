@@ -8,15 +8,15 @@ def cajero():
             #mENU
             print("""
                 Menu
-                1.  Consultar Saldo
-                2.  Retirar Dinero
-                3.  Depósitar Dinero
-                4.  Gestion de clave
-                5.  Consulta de movimientos
-                6.  pagos
-                7.  otras operaciones
-                8.  retiro
-                9.  transferir
+                1. Gestion de clave 
+                2. Consulta de movimientos 
+                3. pagos 
+                4. otras operaciones 
+                5. Retiro rapido cuenta principal 
+                6. Retiro 
+                7. Consulta 
+                8. transferencio
+                9. Salir
             """)
             Pregunta_1 = float(input("¿Cual operaciones desea realizar el usuario?: "))
 
