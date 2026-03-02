@@ -1,13 +1,20 @@
 
-from clave import obtener_usuario_por_pin
+from funciones import Validacion_Usuario
 from cajero import cajero
+autenticacion = True
+id_Usuario = ""
 
-N_cuenta = input("numero de cuenta")
-pin = input("Escriba la clave")
+while autenticacion:
+    print("""
+      Bienvenido a Nuestro Banco
+      """)
+    N_Usuario = input("Numero de Usuario: ")
+    Clave = input("Clave: ")
+    validacion_user=Validacion_Usuario(N_Usuario, Clave)
 
-clave = obtener_usuario_por_pin(pin)
-
-if clave == clave[0]:
-    cajero()
-else:
-    print("clave incorrecta")
+    if validacion_user:
+        autenticacion = False
+        id_Usuario = validacion_user
+        cajero()
+    else:
+        print("Usuario o contraseña incorrecta")
