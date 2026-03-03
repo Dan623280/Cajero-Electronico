@@ -1,5 +1,6 @@
 
 from funciones import Validacion_Usuario
+from Dicionario import usuarios
 from cajero import cajero
 autenticacion = True
 id_Usuario = ""
@@ -15,6 +16,6 @@ while autenticacion:
     if validacion_user:
         autenticacion = False
         id_Usuario = validacion_user
-        cajero()
+        cajero(id_Usuario)
     else:
         print("Usuario o contraseña incorrecta")

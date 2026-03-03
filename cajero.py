@@ -1,13 +1,18 @@
-from funciones import retirar_Dinero
-S_inicial = 0
-moviientos = list
-def cajero():
-    
+from funciones import retirar_Dinero, Datos_user, Validacion_de_clave
+from Dicionario import usuarios
+id_usuario_cajero = ""
+
+def cajero(id_Usuario):
+    id_usuario_cajero = id_Usuario
+    Datos = Datos_user(id_usuario_cajero)
+    S_inicial = Datos.get("saldo")
     while True:
             Confir_2 = True
-            #mENU
-            print("""
-                Menu
+            #Menu
+            print(f"""
+                Bienvenido {Datos.get("nombre")} 
+                Selecciona una de las opciones
+                
                 1. Gestion de clave 
                 2. Consulta de movimientos 
                 3. pagos 
@@ -21,8 +26,16 @@ def cajero():
             Pregunta_1 = float(input("¿Cual operaciones desea realizar el usuario?: "))
 
             if Pregunta_1 == 1:
-
-                print(f"El Saldo Actual es: {S_inicial}")
+                clave= input("clave: ")
+                if Validacion_de_clave(clave):
+                    Nueva_clave = input("nueva clave")
+                    Nueva_clave_2  = input("Coloquela de nuevo para validar: ")
+                    if Nueva_clave == Nueva_clave_2:
+                        usuarios[id_Usuario]["clave"] = Nueva_clave
+                    else:
+                        print("Validacion incorrecta")
+                else:
+                    print("clave incorrecta")        
             elif Pregunta_1 == 2:
                 if S_inicial == 0:
                     Confir_2 = False
@@ -53,8 +66,10 @@ def cajero():
                 print("1. Cambiar Clave")
                 clave = input("colocar clave")
                 
-                        
+            elif Pregunta_1 == 7:
+                print(f"El Saldo Actual es: {S_inicial}")       
             else:
                 print("""
                     Opción inválida
                     """)
+cajero("1001")
