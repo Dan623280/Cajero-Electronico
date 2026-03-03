@@ -9,13 +9,34 @@ def Datos_user(id):
     datos = usuarios.get(id)
     return datos
 
+#--------------------------------------------------------------------
 
-def Validacion_de_clave(Datos,clave):
-    if Datos.get("Clave") == clave:
-        return "true"
+def Validacion_de_clave(id,clave):
+    if usuarios[id]["Clave"] == clave:
+        return True
     else:
         return False
     
+
+def Cambio_clave(id,C_nueva, C_nueva_2):
+    if C_nueva == C_nueva_2:
+        usuarios[id]["Clave"] = C_nueva
+        print("clave cambiada correctamente")
+    else:
+        print("Validacion incorrecta")
+
+#----------------------------------------------------------------
+
+def Mostrardatos(id):
+    print(f"Este es el usuario: {usuarios[id]["nombre"]}")
+    print(f"Este es el  numero de Cuenta: {usuarios[id]["Numero_Cuenta"]}")
+
+
+def ActualizarDatos(id):
+
+
+
+
 
 
 def retirar_Dinero(S_inicial, monto_Reitrar):

@@ -1,5 +1,4 @@
-from funciones import retirar_Dinero, Datos_user, Validacion_de_clave
-from Dicionario import usuarios
+from funciones import retirar_Dinero, Datos_user, Validacion_de_clave, Cambio_clave, Mostrardatos
 id_usuario_cajero = ""
 
 def cajero(id_Usuario):
@@ -22,54 +21,35 @@ def cajero(id_Usuario):
                 7. Consulta 
                 8. transferencio
                 9. Salir
+
             """)
             Pregunta_1 = float(input("¿Cual operaciones desea realizar el usuario?: "))
 
             if Pregunta_1 == 1:
                 clave= input("clave: ")
-                if Validacion_de_clave(clave):
-                    Nueva_clave = input("nueva clave")
-                    Nueva_clave_2  = input("Coloquela de nuevo para validar: ")
-                    if Nueva_clave == Nueva_clave_2:
-                        usuarios[id_Usuario]["clave"] = Nueva_clave
-                    else:
-                        print("Validacion incorrecta")
+                if Validacion_de_clave(id_usuario_cajero,clave):
+                    clave_Nueva = input("Colocar clave: ")
+                    clave_Nueva_2 = input("Colocar clave: ")
+                    Cambio_clave(id_usuario_cajero,clave_Nueva, clave_Nueva_2)
                 else:
                     print("clave incorrecta")        
-            elif Pregunta_1 == 2:
-                if S_inicial == 0:
-                    Confir_2 = False
-                    print("No puede realizar operacion")
-                else:
-                    Confir_2 = True
-                while Confir_2:
-                    monto_Reitrar = float(input("Coloque el monto a retirar: "))
-                    if monto_Reitrar > S_inicial:
-                        print("Fondos insuficientes")
-                    elif monto_Reitrar <= S_inicial:
-                        S_inicial=retirar_Dinero(S_inicial, monto_Reitrar)
-                        Confir_2 = False
-                    else:
-                        print("monto no valido Coloquelo de Nuevo")
-            elif Pregunta_1 == 3:
-                while Confir_2:
-                    Monto_Depositar = int(input("Colocar monto a depositar: "))
-                    if Monto_Depositar == False:
-                        print("Monto Negativo Coloquelo de Nuevo")
-                    else:
-                        S_inicial = S_inicial+Monto_Depositar
-                        print(f"Saldo Depositado Correctamente, Este es el Nuevo Saldo {S_inicial}")
-                        Confir_2 = False
-
             elif Pregunta_1 == 4:
-                print("escriba que quiere hacer")
-                print("1. Cambiar Clave")
-                clave = input("colocar clave")
-                
+                confir_otras_ope = True
+                while confir_otras_ope:
+                    Menu_otrasope =int(input("""
+                    1. Mostrar datos Usuario
+                    2. Actualizar datos
+                    3. Devolver
+                    """))
+                    if Menu_otrasope == 1:
+                        Mostrardatos(id_usuario_cajero)
+                    elif Menu_otrasope == 2:
+                        
+                    
+
             elif Pregunta_1 == 7:
                 print(f"El Saldo Actual es: {S_inicial}")       
             else:
                 print("""
-                    Opción inválida
+                    Opción No válida
                     """)
-cajero("1001")
