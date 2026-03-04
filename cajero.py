@@ -1,4 +1,4 @@
-from funciones import retirar_Dinero_Rapido, Validacion_de_clave, Cambio_clave, Mostrardatos, ActualizarDatos,consultar_saldo, nombre_user, Consulta_Movimientos, retiro,pagos
+from funciones import retirar_Dinero_Rapido, Validacion_de_clave, Cambio_clave, Mostrardatos, ActualizarDatos,consultar_saldo, nombre_user, Consulta_Movimientos, retiro,pagos, transferencia
 id_usuario_cajero = ""
 
 def cajero(id_Usuario):
@@ -93,6 +93,17 @@ def cajero(id_Usuario):
                         confir_retiro = False
             elif Pregunta_1 == 7:
                 consultar_saldo(id_usuario_cajero)
+            elif Pregunta_1 == 8:
+                confir_transfer = True
+                while confir_transfer:
+                    var_transferencia = transferencia(id_usuario_cajero)
+                    if var_transferencia:
+                        print("")
+                        print(var_transferencia)
+                        print("")
+                        confir_transfer = False
+                    else:
+                        confir_transfer = False
             elif Pregunta_1 == 9:
                 return False
             else:

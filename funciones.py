@@ -16,6 +16,10 @@ def Validacion_Usuario(N_Cuenta,Clave):
     for id, datos in usuarios.items():
         if datos["Numero_Cuenta"] == N_Cuenta and datos["Clave"] == Clave:
             return(id)
+def Validacion_numero(N_cuenta):
+    for id, datos in usuarios.items():
+        if datos["Numero_Cuenta"] == N_cuenta:
+            return(id)
 
 def Datos_user(id):
     datos = usuarios.get(id)
@@ -64,8 +68,8 @@ def pagos(id):
         Valor = int(input("Coloque Valor a pagar: "))
         Resultado = usuarios[id]["saldo"] - Valor
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro")
-            return True
+            mensaje="Saldo insuficiente Para Hacer retiro"
+            return mensaje
         else:
             usuarios[id]["saldo"] = Resultado
             mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
@@ -75,8 +79,8 @@ def pagos(id):
         Valor = int(input("Coloque Valor a pagar: "))
         Resultado = usuarios[id]["saldo"] - Valor
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro")
-            return True
+            mensaje="Saldo insuficiente Para Hacer retiro"
+            return mensaje
         else:
             usuarios[id]["saldo"] = Resultado
             mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
@@ -86,8 +90,8 @@ def pagos(id):
         Valor = int(input("Coloque Valor a pagar: "))
         Resultado = usuarios[id]["saldo"] - Valor
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro")
-            return True
+            mensaje="Saldo insuficiente Para Hacer retiro"
+            return mensaje
         else:
             usuarios[id]["saldo"] = Resultado
             mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
@@ -226,3 +230,27 @@ def retiro(id):
 
 def consultar_saldo(id):
     print(f"Este es el saldo {usuarios[id]["saldo"]}")
+    
+#------------------------------------------
+#8. Transferencia
+#---------------------------------------------
+
+
+
+def transferencia(id):
+    Valor = int(input("Coloque Valor a transferir: "))
+    Resultado = usuarios[id]["saldo"] - Valor
+    if Resultado < 0:
+        mensaje="Saldo insuficiente Para Hacer retiro"
+        return mensaje
+    else:
+        numero_de_cuenta = input("coloque el numero de cuenta a Transferir: ")
+        id_transferir = Validacion_numero(numero_de_cuenta)
+        if id_transferir:
+            usuarios[id]["saldo"] = Resultado
+            Resultado_2 = usuarios[id_transferir]["saldo"] + Valor
+            usuarios[id_transferir]["saldo"] = Resultado_2
+            mensaje = f"Transferencia exitosa"
+            usuarios[id]["movimientos"].append(f"Transferencia - Salida : {Valor}  :  {numero_de_cuenta} ")
+            usuarios[id_transferir]["movimientos"].append(f"Transferencia - Entrada : {Valor}  :  {usuarios[id]["Numero_Cuenta"]} ")
+            return mensaje

@@ -7,4 +7,3 @@ usuarios = {
     "1003": {"Numero_Cuenta": "3020715782", "Clave": "9012","nombre": "Carlos Gómez", "saldo": 3200.0, "movimientos": []},
     "1004": {"Numero_Cuenta": "3047197804", "Clave": "3456","nombre": "Ana Torres", "saldo": 1000.0, "movimientos": []}
 }
-4592887579
