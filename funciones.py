@@ -39,7 +39,7 @@ def Cambio_clave(id,C_nueva, C_nueva_2):
     else:
         print("Validacion incorrecta")
 #---------------------------------------------------
-#Consulta de movimientos
+#2. Consulta de movimientos
 #----------------------------------------------------
 
 def Consulta_Movimientos(id):
@@ -47,9 +47,58 @@ def Consulta_Movimientos(id):
     for operacion in usuarios[id]["movimientos"]:
         print(Fore.YELLOW + operacion)
 
+#---------------------------------------------------
+#3. Pagos
+#----------------------------------------------------
 
-
-
+def pagos(id):
+    print("1. Pagar Agua: ")
+    print("2. Pagar Luz: ")
+    print("3. Pagar Gas: ")
+    print("4. Regresar")
+    opcion = int(input("elegir valor "))
+    
+    
+    
+    if opcion == 1:
+        Valor = int(input("Coloque Valor a pagar: "))
+        Resultado = usuarios[id]["saldo"] - Valor
+        if Resultado < 0:
+            print("Saldo insuficiente Para Hacer retiro")
+            return True
+        else:
+            usuarios[id]["saldo"] = Resultado
+            mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
+            usuarios[id]["movimientos"].append(f"Pago de Agua: {Valor}")
+            return mensaje
+    elif opcion == 2:
+        Valor = int(input("Coloque Valor a pagar: "))
+        Resultado = usuarios[id]["saldo"] - Valor
+        if Resultado < 0:
+            print("Saldo insuficiente Para Hacer retiro")
+            return True
+        else:
+            usuarios[id]["saldo"] = Resultado
+            mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
+            usuarios[id]["movimientos"].append(f"Pago de Luz: {Valor}")
+            return mensaje
+    elif opcion == 3:
+        Valor = int(input("Coloque Valor a pagar: "))
+        Resultado = usuarios[id]["saldo"] - Valor
+        if Resultado < 0:
+            print("Saldo insuficiente Para Hacer retiro")
+            return True
+        else:
+            usuarios[id]["saldo"] = Resultado
+            mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
+            usuarios[id]["movimientos"].append(f"Pago de Gas: {Valor}")
+            return mensaje
+    elif opcion == 4:
+        return False
+    else:
+        mensaje = "Opcion no valida"
+        return mensaje
+         
 
 #----------------------------------------------------------------
 # 4. Otras Opciones
@@ -155,8 +204,22 @@ def retirar_Dinero_Rapido(id):
         mensaje = "Opcion no valida"
         return mensaje
 #-----------------------------------
-#
+#6. retiro
 #---------------------------------
+
+def retiro(id):
+    Valor = int(input("Coloque Valor a Retirar: "))
+    Resultado = usuarios[id]["saldo"] - Valor
+    
+    if Resultado < 0:
+        print("Saldo insuficiente Para Hacer retiro")
+        return False
+    else:
+        usuarios[id]["saldo"] = Resultado
+        mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
+        usuarios[id]["movimientos"].append(f"retiro: {Valor}")
+        return mensaje
+
 #-----------------------------------
 #7. Comsultar saldo
 #--------------------------------------

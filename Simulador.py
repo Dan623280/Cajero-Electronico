@@ -14,9 +14,18 @@ while autenticacion:
     validacion_user=Validacion_Usuario(N_Usuario, Clave)
 
     if validacion_user:
-        autenticacion = False
+        autenticacion = True
         id_Usuario = validacion_user
-        cajero(id_Usuario)
-    
+        Salir = True
+        while Salir:
+            Var_cajero = cajero(id_Usuario)
+            if Var_cajero == False:
+                Salir = False
+                print("")
+                print("Salida Exitosa")
+                print("")
+            else:
+                print(Var_cajero)
+                
     else:
         print("Usuario o contraseña incorrecta")
