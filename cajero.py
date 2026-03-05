@@ -1,4 +1,4 @@
-from funciones import retirar_Dinero_Rapido, Validacion_de_clave, Cambio_clave, Mostrardatos, ActualizarDatos,consultar_saldo, nombre_user, Consulta_Movimientos, retiro,pagos, transferencia
+from funciones import retirar_Dinero_Rapido, Validacion_de_clave, Cambio_clave, Mostrardatos, ActualizarDatos,consultar_saldo, nombre_user, Consulta_Movimientos, retiro,pagos, transferencia, Depositar
 id_usuario_cajero = ""
 
 def cajero(id_Usuario):
@@ -15,7 +15,7 @@ def cajero(id_Usuario):
             print ("2. Consulta de movimientos        6. Retiro")
             print ("3. pagos                          7. Consulta Saldo")
             print ("4. otras operaciones              8. transferencia")
-            print ("9. Salir")
+            print ("9. Depositar                      10. Salir")
             print("")
             Pregunta_1 = float(input("¿Cual operaciones desea realizar el usuario?: "))
 
@@ -105,6 +105,8 @@ def cajero(id_Usuario):
                     else:
                         confir_transfer = False
             elif Pregunta_1 == 9:
+                Depositar(id_usuario_cajero)
+            elif Pregunta_1 == 10:
                 return False
             else:
                 print("""

@@ -254,3 +254,11 @@ def transferencia(id):
             usuarios[id]["movimientos"].append(f"Transferencia - Salida : {Valor}  :  {numero_de_cuenta} ")
             usuarios[id_transferir]["movimientos"].append(f"Transferencia - Entrada : {Valor}  :  {usuarios[id]["Numero_Cuenta"]} ")
             return mensaje
+        
+def Depositar(id):
+    Valor = int(input("Coloque Valor a Depositar: "))
+    if Valor:
+        usuarios[id]["saldo"] = usuarios[id]["saldo"] + Valor
+        return "Valor depositado Correctamente"
+    else:
+        return "Valor No valido"
