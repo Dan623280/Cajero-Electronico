@@ -107,6 +107,9 @@ def cajero(id_Usuario):
             elif Pregunta_1 == 9:
                 Depositar(id_usuario_cajero)
             elif Pregunta_1 == 10:
+                print("===================================================")
+                print("Gracias por usar el cajero automatio vuelva pronto ")
+                print("===================================================")
                 return False
             else:
                 print("""
