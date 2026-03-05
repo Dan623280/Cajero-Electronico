@@ -12,10 +12,7 @@ def nombre_user(id):
 #------------------------
 #Validacion
 #------------------------------
-def Validacion_Usuario(N_Cuenta,Clave):
-    for id, datos in usuarios.items():
-        if datos["Numero_Cuenta"] == N_Cuenta and datos["Clave"] == Clave:
-            return(id)
+
 def Validacion_numero(N_cuenta):
     for id, datos in usuarios.items():
         if datos["Numero_Cuenta"] == N_cuenta:
@@ -25,6 +22,16 @@ def Datos_user(id):
     datos = usuarios.get(id)
     return datos
 
+def validar_user_activo(id):
+    if usuarios[id]["Validacion"] == True:
+        return True
+    else:
+        return False
+
+def Bloquear(id):
+    usuarios[id]["Validacion"] == False
+    mensaje = "Usuario Bloqueado"
+    return mensaje
 #----------------------------------------------------
 # 1. Gestion Clave
 #--------------------------------------------------------------------

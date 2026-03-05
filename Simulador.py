@@ -1,31 +1,51 @@
 
-from funciones import Validacion_Usuario
+from funciones import Validacion_numero, Validacion_de_clave, validar_user_activo, Bloquear
 from Dicionario import usuarios
 from cajero import cajero
 autenticacion = True
 id_Usuario = ""
-
+Contador = 0
 while autenticacion:
     print("""
       Bienvenido a Nuestro Banco
       """)
     N_Usuario = input("Numero de Usuario: ")
     Clave = input("Clave: ")
-    validacion_user=Validacion_Usuario(N_Usuario, Clave)
+    Var_Validacion_numero = Validacion_numero(N_Usuario)
+    if Var_Validacion_numero:
+        id_Usuario = Var_Validacion_numero
+        Var_validar_user_activo = validar_user_activo(id_Usuario)
+        
+        if Var_validar_user_activo == True:     
+            Var_Validacion_Clave = Validacion_de_clave(id_Usuario,Clave)
 
-    if validacion_user:
-        autenticacion = True
-        id_Usuario = validacion_user
-        Salir = True
-        while Salir:
-            Var_cajero = cajero(id_Usuario)
-            if Var_cajero == False:
-                Salir = False
-                print("")
-                print("Salida Exitosa")
-                print("")
+            if Var_Validacion_Clave == True:
+                autenticacion = True
+                Salir = True
+                while Salir:
+                    Var_cajero = cajero(id_Usuario)
+                    if Var_cajero == False:
+                        Salir = False
+                        print("")
+                        print("Salida Exitosa")
+                        print("")
+                    else:
+                        print(Var_cajero)
             else:
-                print(Var_cajero)
-                
+                Contador = Contador + 1
+                print("------------------")
+                print("-Clave incorrecta-")
+                print("------------------")
+                if Contador > 3:
+                    print("")
+                    print(Bloquear(id_Usuario))
+                    print("")
+        else:
+            print("--------------------------------------------------------")
+            print("-Usuario inactivo Comuniquese con los servicios de riwi-")
+            print("--------------------------------------------------------")
     else:
-        print("Usuario o contraseña incorrecta")
+        print("--------------------")
+        print("-Usuario incorrecto-")
+        print("--------------------")
+        
