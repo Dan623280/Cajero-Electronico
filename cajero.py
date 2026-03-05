@@ -105,6 +105,9 @@ def cajero(id_Usuario):
                     else:
                         confir_transfer = False
             elif Pregunta_1 == 9:
+                print("===================================================")
+                print("Gracias por usar el cajero automatio vuelva pronto ")
+                print("===================================================")
                 return False
             else:
                 print("""
