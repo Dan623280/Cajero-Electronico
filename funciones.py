@@ -5,6 +5,12 @@ init(autoreset=True)
 #--------------------------------
 #Nombre
 #------------------------------------
+
+AZUL = "\033[94m"
+VERDE = "\033[32m"
+ROJO = "\033[31m"
+AMARILLO = "\033[33m"
+
 def nombre_user(id):
     
     nombre = usuarios[id]["nombre"]
@@ -39,9 +45,9 @@ def Validacion_de_clave(id,clave):
 def Cambio_clave(id,C_nueva, C_nueva_2):
     if C_nueva == C_nueva_2:
         usuarios[id]["Clave"] = C_nueva
-        print("clave cambiada correctamente")
+        print(VERDE+"¡clave cambiada correctamente!"+VERDE)
     else:
-        print("Validacion incorrecta")
+        print(ROJO+"Validacion incorrecta"+ROJO)
 #---------------------------------------------------
 #2. Consulta de movimientos
 #----------------------------------------------------
@@ -56,19 +62,17 @@ def Consulta_Movimientos(id):
 #----------------------------------------------------
 
 def pagos(id):
-    print("1. Pagar Agua: ")
-    print("2. Pagar Luz: ")
-    print("3. Pagar Gas: ")
-    print("4. Regresar")
-    opcion = int(input("elegir valor "))
-    
-    
+    print(AZUL+"1. Pagar Agua: "+AZUL)
+    print(AZUL+"2. Pagar Luz: "+AZUL)
+    print(AZUL+"3. Pagar Gas: "+AZUL)
+    print(AZUL+"4. Regresar"+AZUL)
+    opcion = int(input(AZUL+"elegir valor: "+AZUL))
     
     if opcion == 1:
-        Valor = int(input("Coloque Valor a pagar: "))
+        Valor = int(input(AZUL+"Coloque Valor a pagar: "+AZUL))
         Resultado = usuarios[id]["saldo"] - Valor
         if Resultado < 0:
-            mensaje="Saldo insuficiente Para Hacer retiro"
+            mensaje=AMARILLO+"Saldo insuficiente Para Hacer retiro"+AMARILLO
             return mensaje
         else:
             usuarios[id]["saldo"] = Resultado
@@ -76,10 +80,10 @@ def pagos(id):
             usuarios[id]["movimientos"].append(f"Pago de Agua: {Valor}")
             return mensaje
     elif opcion == 2:
-        Valor = int(input("Coloque Valor a pagar: "))
+        Valor = int(input(AZUL+"Coloque Valor a pagar: "+AZUL))
         Resultado = usuarios[id]["saldo"] - Valor
         if Resultado < 0:
-            mensaje="Saldo insuficiente Para Hacer retiro"
+            mensaje=ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO
             return mensaje
         else:
             usuarios[id]["saldo"] = Resultado
@@ -87,7 +91,7 @@ def pagos(id):
             usuarios[id]["movimientos"].append(f"Pago de Luz: {Valor}")
             return mensaje
     elif opcion == 3:
-        Valor = int(input("Coloque Valor a pagar: "))
+        Valor = int(input(AZUL+"Coloque Valor a pagar: "+AZUL))
         Resultado = usuarios[id]["saldo"] - Valor
         if Resultado < 0:
             mensaje="Saldo insuficiente Para Hacer retiro"
@@ -103,7 +107,6 @@ def pagos(id):
         mensaje = "Opcion no valida"
         return mensaje
          
-
 #----------------------------------------------------------------
 # 4. Otras Opciones
 #--------------------------------------------------------------
@@ -116,35 +119,35 @@ def Mostrardatos(id):
 def ActualizarDatos(id):
     mensaje =""
     print("")
-    print("Seleccione una Operacion")
+    print(AZUL+"Seleccione una Operacion"+AZUL)
     print("")                    
-    print("1. Actualizar nombre")
-    print("2. Actualizar Numero")
-    print("3. Regresar")
+    print(AMARILLO+"1. Actualizar nombre"+AMARILLO)
+    print(AMARILLO+"2. Actualizar Numero"+AMARILLO)
+    print(AMARILLO+"3. Regresar"+AMARILLO)
     
     Menu_Actualizar=int(input(": "))
     if Menu_Actualizar== 1:
-        n_nombre = input("Colocar Nuevo Nombre: ")
+        n_nombre = input(AMARILLO+"Colocar Nuevo Nombre: "+AMARILLO)
         usuarios[id]["nombre"] = n_nombre
         mensaje = f"Tu nombre ahora es: {usuarios[id]["nombre"]}"
         return mensaje
     elif Menu_Actualizar== 2:
-        Confirmar = input("Despues de esta operacion se cambiara la clave, escriba [Y] para confirmar y [N] para no realizar la operacion: ")
+        Confirmar = input(AZUL+"Despues de esta operacion se cambiara la clave, escriba [Y] para confirmar y [N] para no realizar la operacion: "+AZUL)
         if Confirmar == "Y":
             numero = random.randint(1000000000, 9999999999)
             usuarios[id]["Numero_Cuenta"] = str(numero)
             mensaje = (f"{usuarios[id]["nombre"]} Tu numero ahora es {usuarios[id]["Numero_Cuenta"]}")
             return mensaje
         elif Confirmar == "N":
-            mensaje = ("operacion Cancelada")
+            mensaje = (ROJO+"operacion Cancelada"+ROJO)
             return mensaje
         else:
-            mensaje = ("Operacion No valida")
+            mensaje = (ROJO+"Operacion No valida"+ROJO)
             return mensaje
     elif Menu_Actualizar== 3:
         return False
     else:
-        mensaje = ("opcion no valida")
+        mensaje = (ROJO+"opcion no valida"+ROJO)
         return mensaje
 
 #------------------------------------
@@ -152,20 +155,19 @@ def ActualizarDatos(id):
 #--------------------------------------
 
 def retirar_Dinero_Rapido(id):
-    print("Escoja el Monto a retirar")
+    print(AZUL+"Escoja el Monto a retirar"+AZUL)
     print("1. 20.000")
     print("2. 30.000")
     print("3. 50.000")
     print("4. 100.000")
     print("5. Regresar")
     mensaje = ""
-    Valor = int(input("Seleccione Una Opcion: "))
-    
+    Valor = int(input(AZUL+"Seleccione Una Opcion: "+AZUL))
     
     if Valor == 1:
         Resultado = usuarios[id]["saldo"] - 20000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(ROJO+"Saldo insuficiente Para Hacer retiro Rapido"+ROJO)
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -175,7 +177,7 @@ def retirar_Dinero_Rapido(id):
     elif Valor == 2:
         Resultado = usuarios[id]["saldo"] - 30000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(AMARILLO+"Saldo insuficiente Para Hacer retiro Rapido"+AMARILLO)
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -185,7 +187,7 @@ def retirar_Dinero_Rapido(id):
     elif Valor == 3:
         Resultado = usuarios[id]["saldo"] - 50000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(AMARILLO+"Saldo insuficiente Para Hacer retiro Rapido"+AMARILLO)
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -195,7 +197,7 @@ def retirar_Dinero_Rapido(id):
     elif Valor == 4:
         Resultado = usuarios[id]["saldo"] - 100000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(AMARILLO+"Saldo insuficiente Para Hacer retiro Rapido"+AMARILLO)
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -205,18 +207,18 @@ def retirar_Dinero_Rapido(id):
     elif Valor == 5:
         return False
     else:
-        mensaje = "Opcion no valida"
+        mensaje = ROJO+"Opcion no valida"+ROJO
         return mensaje
 #-----------------------------------
 #6. retiro
 #---------------------------------
 
 def retiro(id):
-    Valor = int(input("Coloque Valor a Retirar: "))
+    Valor = int(input(AZUL+"Coloque Valor a Retirar: "+AZUL))
     Resultado = usuarios[id]["saldo"] - Valor
     
     if Resultado < 0:
-        print("Saldo insuficiente Para Hacer retiro")
+        print(AMARILLO+"Saldo insuficiente Para Hacer retiro"+AMARILLO)
         return False
     else:
         usuarios[id]["saldo"] = Resultado
@@ -235,22 +237,20 @@ def consultar_saldo(id):
 #8. Transferencia
 #---------------------------------------------
 
-
-
 def transferencia(id):
-    Valor = int(input("Coloque Valor a transferir: "))
+    Valor = int(input(AZUL+"Coloque Valor a transferir: "+AZUL))
     Resultado = usuarios[id]["saldo"] - Valor
     if Resultado < 0:
-        mensaje="Saldo insuficiente Para Hacer retiro"
+        mensaje=ROJO+"Saldo insuficiente Para Hacer retiro" +ROJO
         return mensaje
     else:
-        numero_de_cuenta = input("coloque el numero de cuenta a Transferir: ")
+        numero_de_cuenta = input(AZUL+"coloque el numero de cuenta a Transferir: "+AZUL)
         id_transferir = Validacion_numero(numero_de_cuenta)
         if id_transferir:
             usuarios[id]["saldo"] = Resultado
             Resultado_2 = usuarios[id_transferir]["saldo"] + Valor
             usuarios[id_transferir]["saldo"] = Resultado_2
-            mensaje = f"Transferencia exitosa"
+            mensaje = f"¡Transferencia exitosa!"
             usuarios[id]["movimientos"].append(f"Transferencia - Salida : {Valor}  :  {numero_de_cuenta} ")
             usuarios[id_transferir]["movimientos"].append(f"Transferencia - Entrada : {Valor}  :  {usuarios[id]["Numero_Cuenta"]} ")
             return mensaje
