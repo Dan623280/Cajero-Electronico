@@ -1,10 +1,32 @@
 from funciones import retirar_Dinero_Rapido, Validacion_de_clave, Cambio_clave, Mostrardatos, ActualizarDatos,consultar_saldo, nombre_user, Consulta_Movimientos, retiro,pagos, transferencia
 
-AZUL = "\033[94m"
-VERDE = "\033[32m"
-ROJO = "\033[31m"
+# RESET
+RESET="\033[0m"
 
-id_usuario_cajero = ""
+# COLORES BÁSICOS
+NEGRO="\033[30m"
+ROJO="\033[31m"
+VERDE="\033[32m"
+AMARILLO="\033[33m"
+AZUL="\033[34m"
+MAGENTA="\033[35m"
+CYAN="\033[36m"
+BLANCO="\033[37m"
+
+# COLORES BRILLANTES
+GRIS = "\033[90m"
+ROJO_BRILLANTE="\033[91m"
+VERDE_BRILLANTE="\033[92m"
+AMARILLO_BRILLANTE="\033[93m"
+AZUL_BRILLANTE="\033[94m"
+MAGENTA_BRILLANTE="\033[95m"
+CYAN_BRILLANTE="\033[96m"
+BLANCO_BRILLANTE="\033[97m"
+
+# ESTILOS DE TEXTO
+NEGRITA="\033[1m"
+SUBRAYADO="\033[4m"
+INVERTIDO="\033[7m"
 
 def cajero(id_Usuario):
     id_usuario_cajero = id_Usuario
@@ -25,7 +47,7 @@ def cajero(id_Usuario):
             Pregunta_1 = float(input(AZUL+"¿Cual operaciones desea realizar el usuario?: "+AZUL))
 
             if Pregunta_1 == 1:
-                clave= input("clave: ")
+                clave= input(AMARILLO+"clave: "+AMARILLO)
                 if Validacion_de_clave(id_usuario_cajero,clave):
                     clave_Nueva = input(AZUL+"Clave nueva: "+AZUL)
                     clave_Nueva_2 = input(AZUL+"Confirmar clave: "+AZUL)

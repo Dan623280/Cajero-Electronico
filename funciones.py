@@ -5,11 +5,33 @@ init(autoreset=True)
 #--------------------------------
 #Nombre
 #------------------------------------
+# RESET
+RESET = "\033[0m"
 
-AZUL = "\033[94m"
-VERDE = "\033[32m"
+# COLORES BÁSICOS
+NEGRO = "\033[30m"
 ROJO = "\033[31m"
+VERDE = "\033[32m"
 AMARILLO = "\033[33m"
+AZUL = "\033[34m"
+MAGENTA = "\033[35m"
+CYAN = "\033[36m"
+BLANCO = "\033[37m"
+
+# COLORES BRILLANTES
+GRIS = "\033[90m"
+ROJO_BRILLANTE = "\033[91m"
+VERDE_BRILLANTE = "\033[92m"
+AMARILLO_BRILLANTE = "\033[93m"
+AZUL_BRILLANTE = "\033[94m"
+MAGENTA_BRILLANTE = "\033[95m"
+CYAN_BRILLANTE = "\033[96m"
+BLANCO_BRILLANTE = "\033[97m"
+
+# ESTILOS DE TEXTO
+NEGRITA = "\033[1m"
+SUBRAYADO = "\033[4m"
+INVERTIDO = "\033[7m"
 
 def nombre_user(id):
     
@@ -36,7 +58,7 @@ def Datos_user(id):
 #--------------------------------------------------------------------
 
 def Validacion_de_clave(id,clave):
-    if usuarios[id]["Clave"] == clave:
+    if usuarios[id][AMARILLO_BRILLANTE+"Clave"+RESET] == clave:
         return True
     else:
         return False
@@ -62,11 +84,11 @@ def Consulta_Movimientos(id):
 #----------------------------------------------------
 
 def pagos(id):
-    print(AZUL+"1. Pagar Agua: "+AZUL)
-    print(AZUL+"2. Pagar Luz: "+AZUL)
-    print(AZUL+"3. Pagar Gas: "+AZUL)
-    print(AZUL+"4. Regresar"+AZUL)
-    opcion = int(input(AZUL+"elegir valor: "+AZUL))
+    print(MAGENTA+"1. Pagar Agua: "+MAGENTA)
+    print(MAGENTA+"2. Pagar Luz: "+MAGENTA)
+    print(MAGENTA+"3. Pagar Gas: "+MAGENTA)
+    print(MAGENTA+"4. Regresar"+MAGENTA)
+    opcion = int(input(MAGENTA+"elegir valor: "+MAGENTA))
     
     if opcion == 1:
         Valor = int(input(AZUL+"Coloque Valor a pagar: "+AZUL))
@@ -94,7 +116,7 @@ def pagos(id):
         Valor = int(input(AZUL+"Coloque Valor a pagar: "+AZUL))
         Resultado = usuarios[id]["saldo"] - Valor
         if Resultado < 0:
-            mensaje="Saldo insuficiente Para Hacer retiro"
+            mensaje=AMARILLO+"Saldo insuficiente Para Hacer retiro"+AMARILLO
             return mensaje
         else:
             usuarios[id]["saldo"] = Resultado
@@ -104,7 +126,7 @@ def pagos(id):
     elif opcion == 4:
         return False
     else:
-        mensaje = "Opcion no valida"
+        mensaje =AMARILLO+"Opcion no valida"+AMARILLO
         return mensaje
          
 #----------------------------------------------------------------
@@ -181,7 +203,7 @@ def retirar_Dinero_Rapido(id):
             return False
         else:
             usuarios[id]["saldo"] = Resultado
-            mensaje = f"Este Es el nuevo Saldo {Resultado}"
+            mensaje = f"{AMARILLO}Este Es el nuevo Saldo {Resultado}{RESET}"
             usuarios[id]["movimientos"].append(f"retiro: {30000}")
             return mensaje
     elif Valor == 3:
@@ -191,7 +213,7 @@ def retirar_Dinero_Rapido(id):
             return False
         else:
             usuarios[id]["saldo"] = Resultado
-            mensaje = f"Este Es el nuevo Saldo {Resultado}"
+            mensaje = f"{AMARILLO}Este Es el nuevo Saldo {Resultado}{RESET}"
             usuarios[id]["movimientos"].append(f"retiro: {50000}")
             return mensaje
     elif Valor == 4:
@@ -250,7 +272,7 @@ def transferencia(id):
             usuarios[id]["saldo"] = Resultado
             Resultado_2 = usuarios[id_transferir]["saldo"] + Valor
             usuarios[id_transferir]["saldo"] = Resultado_2
-            mensaje = f"¡Transferencia exitosa!"
+            mensaje = f"{VERDE}¡Transferencia exitosa!{RESET}"
             usuarios[id]["movimientos"].append(f"Transferencia - Salida : {Valor}  :  {numero_de_cuenta} ")
             usuarios[id_transferir]["movimientos"].append(f"Transferencia - Entrada : {Valor}  :  {usuarios[id]["Numero_Cuenta"]} ")
             return mensaje
