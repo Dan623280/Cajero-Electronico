@@ -17,9 +17,9 @@ def cajero(id_Usuario):
             print ("4. otras operaciones              8. transferencia")
             print ("9. Depositar                      10. Salir")
             print("")
-            Pregunta_1 = float(input("¿Cual operaciones desea realizar el usuario?: "))
+            Pregunta_1 = input("¿Cual operaciones desea realizar el usuario?: ")
 
-            if Pregunta_1 == 1:
+            if Pregunta_1 == "1":
                 clave= input("clave: ")
                 if Validacion_de_clave(id_usuario_cajero,clave):
                     clave_Nueva = input("Clave nueva: ")
@@ -27,9 +27,9 @@ def cajero(id_Usuario):
                     Cambio_clave(id_usuario_cajero,clave_Nueva, clave_Nueva_2)
                 else:
                     print("clave incorrecta")   
-            elif Pregunta_1 == 2:
+            elif Pregunta_1 == "2":
                 Consulta_Movimientos(id_usuario_cajero)
-            elif Pregunta_1 == 3:
+            elif Pregunta_1 == "3":
                 confir_pagos = True
                 while confir_pagos:
                     var_pagos = pagos(id_usuario_cajero)
@@ -40,7 +40,7 @@ def cajero(id_Usuario):
                         confir_pagos = True
                     else:
                         confir_pagos = False
-            elif Pregunta_1 == 4:
+            elif Pregunta_1 == "4":
                 confir_otras_ope = True
                 while confir_otras_ope:
                     
@@ -48,10 +48,10 @@ def cajero(id_Usuario):
                     print("2. Actualizar datos")
                     print("3. Regresar")
                     
-                    Menu_otrasope =int(input(": "))
-                    if Menu_otrasope == 1:
+                    Menu_otrasope =input(": ")
+                    if Menu_otrasope == "1":
                         Mostrardatos(id_usuario_cajero)
-                    elif Menu_otrasope == 2:
+                    elif Menu_otrasope == "2":
                         confir_Menu = True
                         while confir_Menu:
                             Var_actualizar = ActualizarDatos(id_usuario_cajero)
@@ -63,13 +63,13 @@ def cajero(id_Usuario):
                                 confir_Menu = True
                             else:
                                 confir_Menu = False
-                    elif Menu_otrasope == 3:
+                    elif Menu_otrasope == "3":
                         confir_otras_ope = False
                     else:
                         print("Opcion no valida")
                         
                     
-            elif Pregunta_1 == 5:
+            elif Pregunta_1 == "5":
                 confir_retirar_rapido = True
                 while confir_retirar_rapido:
                     var_retirar_rapido = retirar_Dinero_Rapido(id_usuario_cajero)
@@ -80,7 +80,7 @@ def cajero(id_Usuario):
                         confir_retirar_rapido = True
                     else:
                         confir_retirar_rapido = False
-            elif Pregunta_1 == 6:
+            elif Pregunta_1 == "6":
                 confir_retiro = True
                 while confir_retiro:
                     var_retiro = retiro(id_usuario_cajero)
@@ -91,9 +91,9 @@ def cajero(id_Usuario):
                         confir_retiro = False
                     else:
                         confir_retiro = False
-            elif Pregunta_1 == 7:
+            elif Pregunta_1 == "7":
                 consultar_saldo(id_usuario_cajero)
-            elif Pregunta_1 == 8:
+            elif Pregunta_1 == "8":
                 confir_transfer = True
                 while confir_transfer:
                     var_transferencia = transferencia(id_usuario_cajero)
@@ -104,9 +104,12 @@ def cajero(id_Usuario):
                         confir_transfer = False
                     else:
                         confir_transfer = False
-            elif Pregunta_1 == 9:
-                Depositar(id_usuario_cajero)
-            elif Pregunta_1 == 10:
+            elif Pregunta_1 == "9":
+                print("")
+                print(Depositar(id_usuario_cajero))
+                print("")
+            elif Pregunta_1 == "10":
+                
                 print("====================================================")
                 print("=Gracias por usar el cajero automatio vuelva pronto= ")
                 print("====================================================")

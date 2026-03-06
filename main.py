@@ -7,7 +7,7 @@ id_Usuario = ""
 Contador = 0
 while autenticacion:
     print("""
-      Bienvenido a Nuestro Banco
+      Bienvenido a Nuestro Banco TechBank Riwi Digital
       """)
     N_Usuario = input("Numero de Usuario: ")
     Clave = input("Clave: ")
@@ -15,8 +15,8 @@ while autenticacion:
     if Var_Validacion_numero:
         id_Usuario = Var_Validacion_numero
         Var_validar_user_activo = validar_user_activo(id_Usuario)
-        
-        if Var_validar_user_activo == True:     
+        print(Var_validar_user_activo)
+        if Var_validar_user_activo == "Activo":     
             Var_Validacion_Clave = Validacion_de_clave(id_Usuario,Clave)
 
             if Var_Validacion_Clave == True:
@@ -36,9 +36,10 @@ while autenticacion:
                 print("------------------")
                 print("-Clave incorrecta-")
                 print("------------------")
-                if Contador > 3:
+                if Contador == 3:
+                    VarBloquear = Bloquear(id_Usuario)
                     print("")
-                    print(Bloquear(id_Usuario))
+                    print(VarBloquear)
                     print("")
         else:
             print("--------------------------------------------------------")
