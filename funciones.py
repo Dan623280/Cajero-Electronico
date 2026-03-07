@@ -251,16 +251,20 @@ def retiro(id):
                 mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
         else:
-            Resultado = usuarios[id]["saldo"] - Valor
-
-            if Resultado < 0:
-                print(ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO)
-                return False
-            else:
-                usuarios[id]["saldo"] = Resultado
-                mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
-                usuarios[id]["movimientos"].append(f"retiro: {Valor}")
+            if Valor > 1000000:
+                mensaje = ROJO + "No puede Hacer Retiros con Valores Mayores a un 1000000"+ROJO
                 return mensaje
+            else:
+                Resultado = usuarios[id]["saldo"] - Valor
+
+                if Resultado < 0:
+                    print(ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO)
+                    return False
+                else:
+                    usuarios[id]["saldo"] = Resultado
+                    mensaje = f"Este Es el nuevo Saldo {usuarios[id]["saldo"]}"
+                    usuarios[id]["movimientos"].append(f"retiro: {Valor}")
+                    return mensaje
     except:
         mensaje =ROJO+"Valor no valido"+ROJO
         return mensaje
@@ -285,24 +289,28 @@ def transferencia(id):
                 mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
         else:
-            Resultado = usuarios[id]["saldo"] - Valor
-            if Resultado < 0:
-                mensaje = ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO               
+            if Valor > 1000000:
+                mensaje = ROJO + "No puede Hacer Transferencias con Valores Mayores a un 1000000"+ROJO
                 return mensaje
             else:
-                numero_de_cuenta = input("coloque el numero de cuenta a Transferir: ")
-                id_transferir = Validacion_numero(numero_de_cuenta)
-                if id_transferir:
-                    usuarios[id]["saldo"] = Resultado
-                    Resultado_2 = usuarios[id_transferir]["saldo"] + Valor
-                    usuarios[id_transferir]["saldo"] = Resultado_2
-                    mensaje = f"Transferencia exitosa"
-                    usuarios[id]["movimientos"].append(f"Transferencia - Salida : {Valor}  :  {numero_de_cuenta} ")
-                    usuarios[id_transferir]["movimientos"].append(f"Transferencia - Entrada : {Valor}  :  {usuarios[id]["Numero_Cuenta"]} ")
+                Resultado = usuarios[id]["saldo"] - Valor
+                if Resultado < 0:
+                    mensaje = ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO               
                     return mensaje
                 else:
-                    mensaje = f"El numero de cuenta {numero_de_cuenta} no esta Registrado en Nuestro Banco"
-                    return mensaje
+                    numero_de_cuenta = input("coloque el numero de cuenta a Transferir: ")
+                    id_transferir = Validacion_numero(numero_de_cuenta)
+                    if id_transferir:
+                        usuarios[id]["saldo"] = Resultado
+                        Resultado_2 = usuarios[id_transferir]["saldo"] + Valor
+                        usuarios[id_transferir]["saldo"] = Resultado_2
+                        mensaje = f"Transferencia exitosa"
+                        usuarios[id]["movimientos"].append(f"Transferencia - Salida : {Valor}  :  {numero_de_cuenta} ")
+                        usuarios[id_transferir]["movimientos"].append(f"Transferencia - Entrada : {Valor}  :  {usuarios[id]["Numero_Cuenta"]} ")
+                        return mensaje
+                    else:
+                        mensaje = f"El numero de cuenta {numero_de_cuenta} no esta Registrado en Nuestro Banco"
+                        return mensaje
     except:
         mensaje = ROJO+"Valor no valido"+ROJO
         return mensaje
@@ -313,11 +321,15 @@ def Depositar(id):
                 mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
         else:
-            if Valor:
-                usuarios[id]["saldo"] = usuarios[id]["saldo"] + Valor
-                return "Valor depositado Correctamente"
+            if Valor > 1000000:
+                mensaje = ROJO + "No puede Hacer Depositos con Valores Mayores a un 1000000"+ROJO
+                return mensaje
             else:
-                return ROJO+"Valor No valido"+ROJO
+                if Valor:
+                    usuarios[id]["saldo"] = usuarios[id]["saldo"] + Valor
+                    return "Valor depositado Correctamente"
+                else:
+                    return ROJO+"Valor No valido"+ROJO
     except:
         mensaje = ROJO+"Valor no valido"+ROJO
         return mensaje
