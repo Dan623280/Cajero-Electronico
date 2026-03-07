@@ -1,4 +1,6 @@
 from funciones import retirar_Dinero_Rapido, Validacion_de_clave, Cambio_clave, Mostrardatos, ActualizarDatos,consultar_saldo, nombre_user, Consulta_Movimientos, retiro,pagos, transferencia, Depositar
+from Colores import RESET, NEGRO,ROJO,VERDE, AMARILLO, AZUL, MAGENTA, CYAN, BLANCO, GRIS, ROJO_BRILLANTE, VERDE_BRILLANTE,AMARILLO_BRILLANTE,AZUL_BRILLANTE,MAGENTA_BRILLANTE,CYAN_BRILLANTE,BLANCO_BRILLANTE,NEGRITA,SUBRAYADO,INVERTIDO
+
 id_usuario_cajero = ""
 
 def cajero(id_Usuario):
@@ -8,8 +10,8 @@ def cajero(id_Usuario):
     while Confir_2:
             #Menu
             print("")
-            print (f"Bienvenido {nombre}") 
-            print ("Selecciona una de las opciones")
+            print (VERDE+f"Bienvenido {nombre}"+VERDE) 
+            print (AZUL+"Selecciona una de las opciones"+AZUL)
             print ("")
             print ("1. Gestion de clave               5. Retiro rapido cuenta principal") 
             print ("2. Consulta de movimientos        6. Retiro")
@@ -17,16 +19,17 @@ def cajero(id_Usuario):
             print ("4. otras operaciones              8. transferencia")
             print ("9. Depositar                      10. Salir")
             print("")
-            Pregunta_1 = input("¿Cual operaciones desea realizar el usuario?: ")
+            Pregunta_1 = input(AZUL+"¿Cual operaciones desea realizar el usuario?: "+AZUL)
 
             if Pregunta_1 == "1":
-                clave= input("clave: ")
+                clave= input(AMARILLO+"clave: "+AMARILLO)
                 if Validacion_de_clave(id_usuario_cajero,clave):
-                    clave_Nueva = input("Clave nueva: ")
-                    clave_Nueva_2 = input("Confirmar clave: ")
+                    clave_Nueva = input(AZUL+"Clave nueva: "+AZUL)
+                    clave_Nueva_2 = input(AZUL+"Confirmar clave: "+AZUL)
                     Cambio_clave(id_usuario_cajero,clave_Nueva, clave_Nueva_2)
                 else:
-                    print("clave incorrecta")   
+                    print(ROJO+"clave incorrecta"+ROJO)   
+
             elif Pregunta_1 == "2":
                 Consulta_Movimientos(id_usuario_cajero)
             elif Pregunta_1 == "3":
@@ -44,9 +47,9 @@ def cajero(id_Usuario):
                 confir_otras_ope = True
                 while confir_otras_ope:
                     
-                    print("1. Mostrar datos Usuario")                    
-                    print("2. Actualizar datos")
-                    print("3. Regresar")
+                    print(AZUL+"1. Mostrar datos Usuario"+AZUL)                    
+                    print(AZUL+"2. Actualizar datos"+AZUL)
+                    print(AZUL+"3. Regresar"+AZUL)
                     
                     Menu_otrasope =input(": ")
                     if Menu_otrasope == "1":
@@ -66,7 +69,7 @@ def cajero(id_Usuario):
                     elif Menu_otrasope == "3":
                         confir_otras_ope = False
                     else:
-                        print("Opcion no valida")
+                        print(ROJO+"Opcion no valida"+ROJO)
                         
                     
             elif Pregunta_1 == "5":
@@ -92,7 +95,9 @@ def cajero(id_Usuario):
                     else:
                         confir_retiro = False
             elif Pregunta_1 == "7":
+                print("")
                 consultar_saldo(id_usuario_cajero)
+                print("")
             elif Pregunta_1 == "8":
                 confir_transfer = True
                 while confir_transfer:
@@ -110,11 +115,11 @@ def cajero(id_Usuario):
                 print("")
             elif Pregunta_1 == "10":
                 
-                print("====================================================")
-                print("=Gracias por usar el cajero automatio vuelva pronto= ")
-                print("====================================================")
+                print(ROJO+"===================================================="+ROJO)
+                print(ROJO+"=Gracias por usar el cajero automatio vuelva pronto="+ROJO)
+                print(ROJO+"===================================================="+ROJO)
                 return False
             else:
-                print("""
-                    Opción No válida
-                    """)
+                print(ROJO+"=================="+ROJO)
+                print(ROJO+"=Opción No válida="+ROJO)
+                print(ROJO+"=================="+ROJO)

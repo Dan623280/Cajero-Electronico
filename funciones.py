@@ -1,6 +1,8 @@
 from Dicionario import usuarios
 import random
 from colorama import init, Fore, Style
+from Colores import RESET, NEGRO,ROJO,VERDE, AMARILLO, AZUL, MAGENTA, CYAN, BLANCO, GRIS, ROJO_BRILLANTE, VERDE_BRILLANTE,AMARILLO_BRILLANTE,AZUL_BRILLANTE,MAGENTA_BRILLANTE,CYAN_BRILLANTE,BLANCO_BRILLANTE,NEGRITA,SUBRAYADO,INVERTIDO
+
 init(autoreset=True)
 #--------------------------------
 #Nombre
@@ -30,7 +32,7 @@ def validar_user_activo(id):
 
 def Bloquear(id):
     usuarios[id]["Validacion"] = "Inactivo"
-    mensaje = "Usuario Bloqueado"
+    mensaje = AMARILLO+"Usuario Bloqueado"+AMARILLO
     return mensaje
 #----------------------------------------------------
 # 1. Gestion Clave
@@ -48,7 +50,7 @@ def Cambio_clave(id,C_nueva, C_nueva_2):
         usuarios[id]["Clave"] = C_nueva
         print("clave cambiada correctamente")
     else:
-        print("Validacion incorrecta")
+        print(ROJO+"Validacion incorrecta"+ROJO)
 #---------------------------------------------------
 #2. Consulta de movimientos
 #----------------------------------------------------
@@ -63,10 +65,10 @@ def Consulta_Movimientos(id):
 #----------------------------------------------------
 
 def pagos(id):
-    print("1. Pagar Agua: ")
-    print("2. Pagar Luz: ")
-    print("3. Pagar Gas: ")
-    print("4. Regresar")
+    print(MAGENTA+"1. Pagar Agua: "+MAGENTA)
+    print(MAGENTA+"2. Pagar Luz: "+MAGENTA)
+    print(MAGENTA+"3. Pagar Gas: "+MAGENTA)
+    print(MAGENTA+"4. Regresar"+MAGENTA)
     opcion = input("elegir valor ")
     
     
@@ -75,12 +77,12 @@ def pagos(id):
         try:
             Valor = int(input("Coloque Valor a pagar: "))
             if Valor < 0:
-                mensaje = "Valor invalido"
+                mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
             else:
                 Resultado = usuarios[id]["saldo"] - Valor
                 if Resultado < 0:
-                    mensaje="Saldo insuficiente Para Hacer retiro"
+                    mensaje=ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO
                     return mensaje
                 else:
                     usuarios[id]["saldo"] = Resultado
@@ -88,18 +90,18 @@ def pagos(id):
                     usuarios[id]["movimientos"].append(f"Pago de Agua: {Valor}")
                     return mensaje
         except:
-            mensaje="Valor no valido"
+            mensaje=ROJO+"Valor no valido"+ROJO
             return mensaje
     elif opcion == "2":
         try:
             Valor = int(input("Coloque Valor a pagar: "))
             if Valor < 0:
-                mensaje = "Valor invalido"
+                mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
             else:
                 Resultado = usuarios[id]["saldo"] - Valor
                 if Resultado < 0:
-                    mensaje="Saldo insuficiente Para Hacer retiro"
+                    mensaje = ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO                    
                     return mensaje
                 else:
                     usuarios[id]["saldo"] = Resultado
@@ -107,19 +109,19 @@ def pagos(id):
                     usuarios[id]["movimientos"].append(f"Pago de Luz: {Valor}")
                     return mensaje
         except:
-            mensaje= "Valor no valido"
+            mensaje= ROJO+"Valor no valido"+ROJO
             return mensaje
     elif opcion == "3":
         try:
             
             Valor = int(input("Coloque Valor a pagar: "))
             if Valor < 0:
-                mensaje = "Valor invalido"
+                mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
             else:
                 Resultado = usuarios[id]["saldo"] - Valor
                 if Resultado < 0:
-                    mensaje="Saldo insuficiente Para Hacer retiro"
+                    mensaje = ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO                   
                     return mensaje
                 else:
                     usuarios[id]["saldo"] = Resultado
@@ -127,7 +129,7 @@ def pagos(id):
                     usuarios[id]["movimientos"].append(f"Pago de Gas: {Valor}")
                     return mensaje
         except:
-            mensaje= "Valor no valido"
+            mensaje= ROJO+"Valor no valido"+ROJO
             return mensaje
     elif opcion == "4":
         return False
@@ -196,7 +198,7 @@ def retirar_Dinero_Rapido(id):
     if Valor == "1":
         Resultado = usuarios[id]["saldo"] - 20000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(ROJO+"Saldo insuficiente Para Hacer retiro Rapido")
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -206,7 +208,7 @@ def retirar_Dinero_Rapido(id):
     elif Valor == "2":
         Resultado = usuarios[id]["saldo"] - 30000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(ROJO+"Saldo insuficiente Para Hacer retiro Rapido")
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -216,7 +218,7 @@ def retirar_Dinero_Rapido(id):
     elif Valor == "3":
         Resultado = usuarios[id]["saldo"] - 50000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(ROJO+"Saldo insuficiente Para Hacer retiro Rapido")
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -226,7 +228,7 @@ def retirar_Dinero_Rapido(id):
     elif Valor == "4":
         Resultado = usuarios[id]["saldo"] - 100000
         if Resultado < 0:
-            print("Saldo insuficiente Para Hacer retiro Rapido")
+            print(ROJO+"Saldo insuficiente Para Hacer retiro Rapido")
             return False
         else:
             usuarios[id]["saldo"] = Resultado
@@ -246,13 +248,13 @@ def retiro(id):
     try:
         Valor = int(input("Coloque Valor a Retirar: "))
         if Valor < 0:
-                mensaje = "Valor invalido"
+                mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
         else:
             Resultado = usuarios[id]["saldo"] - Valor
 
             if Resultado < 0:
-                print("Saldo insuficiente Para Hacer retiro")
+                print(ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO)
                 return False
             else:
                 usuarios[id]["saldo"] = Resultado
@@ -260,7 +262,7 @@ def retiro(id):
                 usuarios[id]["movimientos"].append(f"retiro: {Valor}")
                 return mensaje
     except:
-        mensaje ="Valor no valido"
+        mensaje =ROJO+"Valor no valido"+ROJO
         return mensaje
 
 #-----------------------------------
@@ -280,12 +282,12 @@ def transferencia(id):
     try:
         Valor = int(input("Coloque Valor a transferir: "))
         if Valor < 0:
-                mensaje = "Valor invalido"
+                mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
         else:
             Resultado = usuarios[id]["saldo"] - Valor
             if Resultado < 0:
-                mensaje="Saldo insuficiente Para Hacer retiro"
+                mensaje = ROJO+"Saldo insuficiente Para Hacer retiro"+ROJO               
                 return mensaje
             else:
                 numero_de_cuenta = input("coloque el numero de cuenta a Transferir: ")
@@ -302,20 +304,20 @@ def transferencia(id):
                     mensaje = f"El numero de cuenta {numero_de_cuenta} no esta Registrado en Nuestro Banco"
                     return mensaje
     except:
-        mensaje = "Valor no valido"
+        mensaje = ROJO+"Valor no valido"+ROJO
         return mensaje
 def Depositar(id):
     try:
         Valor = int(input("Coloque Valor a Depositar: "))
         if Valor < 0:
-                mensaje = "Valor invalido"
+                mensaje = ROJO+"Valor invalido"+ROJO
                 return mensaje
         else:
             if Valor:
                 usuarios[id]["saldo"] = usuarios[id]["saldo"] + Valor
                 return "Valor depositado Correctamente"
             else:
-                return "Valor No valido"
+                return ROJO+"Valor No valido"+ROJO
     except:
-        mensaje = "Valor no valido"
+        mensaje = ROJO+"Valor no valido"+ROJO
         return mensaje
