@@ -1,226 +1,275 @@
- Cajero Electrónico - TechBank Riwi Digital
+# Cajero Electrónico - TechBank Riwi Digital
 
-Este proyecto es una **simulación de un cajero automático (ATM)** desarrollado en Python que funciona completamente desde la terminal.
+Este proyecto es una simulación de un **Cajero Automático (ATM)**
+desarrollado en Python que funciona completamente desde la terminal.
 
-El usuario puede iniciar sesión con su **número de cuenta y clave**, y realizar diferentes operaciones bancarias como:
+La aplicación permite a los usuarios iniciar sesión con su **número de
+cuenta y clave**, y realizar diferentes operaciones bancarias como:
 
-- Consultar saldo
-- Retirar dinero
-- Retiro rápido
-- Depositar dinero
-- Transferir dinero a otras cuentas
-- Pagar servicios (agua, luz o gas)
-- Consultar historial de movimientos
-- Cambiar su clave
-- Actualizar sus datos
+-   Consultar saldo
+-   Retirar dinero
+-   Retiro rápido
+-   Depositar dinero
+-   Transferir dinero a otras cuentas
+-   Pagar servicios (agua, luz o gas)
+-   Consultar historial de movimientos
+-   Cambiar su clave
+-   Actualizar sus datos
 
-El sistema está diseñado para simular el funcionamiento básico de un cajero automático de forma sencilla desde la consola.
+El objetivo del programa es simular el funcionamiento básico de un
+cajero automático desde la consola.
 
----
+------------------------------------------------------------------------
 
-# Cómo descargar el proyecto
+# Ubicación del repositorio
 
-Primero debes **clonar el repositorio desde GitHub**.
+El proyecto se encuentra en el siguiente repositorio de GitHub:
 
-En tu terminal escribe:
+https://github.com/Dan623280/Cajero-Electronico
 
-```bash
+------------------------------------------------------------------------
+
+# Cómo clonar el repositorio
+
+Para descargar el proyecto en tu computador debes abrir la terminal y
+ejecutar:
+
+``` bash
 git clone https://github.com/Dan623280/Cajero-Electronico.git
+```
 
 Luego entra a la carpeta del proyecto:
 
+``` bash
 cd Cajero-Electronico
-Cómo ejecutar el programa
+```
+
+------------------------------------------------------------------------
+
+# Cómo ejecutar el programa
 
 El archivo principal del programa es:
 
-main.py
+    main.py
 
-Para iniciar el cajero automático ejecuta:
+Para ejecutar el cajero automático usa:
 
+``` bash
 python main.py
+```
 
-El sistema te pedirá número de usuario y clave para iniciar sesión.
+------------------------------------------------------------------------
 
-Usuarios para iniciar sesión
+# Usuarios para iniciar sesión
 
-Puedes usar cualquiera de los siguientes usuarios de prueba:
+Puedes usar cualquiera de estos usuarios:
 
-Número de cuenta	Clave
-3224716782	1234
-3005716782	5678
-3020715782	9012
-3047197804	3456
+  Numero de cuenta   Clave
+  ------------------ -------
+  3224716782         1234
+  3005716782         5678
+  3020715782         9012
+  3047197804         3456
 
 Ejemplo de inicio de sesión:
 
-Numero de Usuario: 3224716782
-Clave: 1234
+    Numero de Usuario: 3224716782
+    Clave: 1234
 
-Si la clave se introduce incorrectamente 3 veces, la cuenta será bloqueada automáticamente.
+Si la clave se introduce **incorrectamente tres veces**, el usuario será
+**bloqueado automáticamente**.
 
-Menú principal del cajero
+------------------------------------------------------------------------
 
-Después de iniciar sesión correctamente, el cajero mostrará el siguiente menú:
+# Menú principal del cajero
 
-1. Gestion de clave
-2. Consulta de movimientos
-3. pagos
-4. otras operaciones
-5. Retiro rapido cuenta principal
-6. Retiro
-7. Consulta Saldo
-8. transferencia
-9. Depositar
-10. Salir
+Después de iniciar sesión correctamente el sistema mostrará el siguiente
+menú:
 
-Cada opción permite realizar diferentes operaciones bancarias.
+    1. Gestion de clave               5. Retiro rapido cuenta principal
+    2. Consulta de movimientos        6. Retiro
+    3. pagos                          7. Consulta Saldo
+    4. otras operaciones              8. transferencia
+    9. Depositar                      10. Salir
 
-Cambiar clave (Gestión de clave)
+------------------------------------------------------------------------
 
-Esta opción permite cambiar la clave de acceso del usuario.
+# Cambiar clave
+
+La opción **Gestión de clave** permite cambiar la contraseña del
+usuario.
 
 Pasos:
 
-Seleccionar la opción 1
+1.  Seleccionar la opción **1**
+2.  Ingresar la **clave actual**
+3.  Ingresar la **nueva clave**
+4.  Confirmar la nueva clave
 
-Ingresar la clave actual
+Si ambas claves coinciden, la clave será actualizada correctamente.
 
-Ingresar la nueva clave
+------------------------------------------------------------------------
 
-Confirmar la nueva clave
+# Consulta de movimientos
 
-Si ambas claves coinciden, la clave será actualizada.
+Permite ver el historial de operaciones realizadas en la cuenta:
 
-Esto permite al usuario mejorar la seguridad de su cuenta.
+-   Retiros
+-   Transferencias
+-   Pagos de servicios
 
-Consulta de movimientos
+------------------------------------------------------------------------
 
-Esta opción muestra el historial de operaciones realizadas, como:
+# Pagos
 
-Retiros
+Permite pagar servicios básicos desde el cajero:
 
-Transferencias
+-   Agua
+-   Luz
+-   Gas
 
-Pagos de servicios
+El valor del servicio se descuenta del saldo del usuario.
 
-Esto permite al usuario ver todas las transacciones realizadas desde su cuenta.
+------------------------------------------------------------------------
 
-Pagos
+# Otras operaciones
 
-Permite pagar servicios básicos directamente desde el cajero.
+Esta opción permite consultar y actualizar los datos del usuario.
 
-Opciones disponibles:
+Opciones:
 
-Pagar agua
+    1. Mostrar datos usuario
+    2. Actualizar datos
+    3. Regresar
 
-Pagar luz
+------------------------------------------------------------------------
 
-Pagar gas
+# Actualizar datos
 
-El valor pagado se descuenta del saldo disponible.
+Dentro de esta sección se pueden modificar datos del usuario.
 
-Otras operaciones
+### Cambiar nombre
 
-Este menú incluye opciones para consultar y actualizar los datos del usuario.
+Permite actualizar el nombre del usuario registrado.
 
-Opciones disponibles:
+### Cambiar número de cuenta
 
-1. Mostrar datos usuario
-2. Actualizar datos
-3. Regresar
-Actualizar datos
-
-Dentro de esta sección el usuario puede modificar su información.
-
-Opciones disponibles:
-
-Cambiar nombre
-
-Permite actualizar el nombre del usuario asociado a la cuenta.
-
-Cambiar número de cuenta
-
-El sistema genera automáticamente un nuevo número de cuenta para el usuario.
+El sistema genera automáticamente un **nuevo número de cuenta** para el
+usuario.
 
 Después de confirmar la operación:
 
-Se genera un número de cuenta nuevo
+-   Se asigna un nuevo número de cuenta
+-   El número anterior deja de funcionar
 
-El número anterior deja de funcionar
+------------------------------------------------------------------------
 
-Esto simula la actualización de datos bancarios dentro del sistema.
+# Retiro rápido
 
-Retiro rápido
+Permite retirar dinero con montos predefinidos:
 
-Permite retirar dinero rápidamente con montos predefinidos.
+-   20.000
+-   30.000
+-   50.000
+-   100.000
 
-Ejemplos:
+------------------------------------------------------------------------
 
-20.000
+# Retiro personalizado
 
-30.000
-
-50.000
-
-100.000
-
-El dinero se descuenta automáticamente del saldo disponible.
-
-Retiro personalizado
-
-Permite ingresar cualquier valor de retiro dentro del límite permitido.
+Permite retirar cualquier cantidad dentro del límite permitido.
 
 Condiciones:
 
-No puede ser un valor negativo
+-   El valor no puede ser negativo
+-   El valor no puede superar **1.000.000**
+-   Debe existir saldo suficiente
 
-No puede superar 1.000.000
+------------------------------------------------------------------------
 
-Debe existir saldo suficiente
-
-Consulta de saldo
+# Consulta de saldo
 
 Muestra el saldo actual disponible en la cuenta.
 
-Transferencias
+------------------------------------------------------------------------
+
+# Transferencias
 
 Permite enviar dinero a otra cuenta dentro del sistema.
 
 Pasos:
 
-Ingresar el valor a transferir
+1.  Ingresar el valor a transferir
+2.  Ingresar el número de cuenta destino
+3.  Confirmar la operación
 
-Ingresar el número de cuenta destino
+------------------------------------------------------------------------
 
-Confirmar la operación
+# Depositar dinero
 
-Si la cuenta existe y hay saldo suficiente, la transferencia se realiza correctamente.
+Permite agregar dinero a la cuenta del usuario.
 
-Depositar dinero
+El sistema suma el valor ingresado al saldo actual.
 
-Permite agregar dinero a la cuenta.
+------------------------------------------------------------------------
 
-El sistema suma el valor ingresado al saldo actual del usuario.
+# Salir del sistema
 
-Salir del cajero
+La opción **10** permite salir del cajero automático de forma segura.
 
-La opción 10 permite salir del sistema de forma segura.
+------------------------------------------------------------------------
 
-Características del sistema
+# Ejemplo visual de uso
 
-Autenticación por número de cuenta y clave
+Ejecutar el programa:
 
-Bloqueo automático después de 3 intentos fallidos
+``` bash
+python main.py
+```
 
-Registro de movimientos
+Inicio de sesión:
 
-Transferencias entre usuarios
+    Bienvenido a Nuestro Banco TechBank Riwi Digital
 
-Pagos de servicios
+    Numero de Usuario: 3224716782
+    Clave: 1234
 
-Depósitos
+Menú del cajero:
 
-Retiros rápidos y personalizados
+    Bienvenido Juan Pérez
 
-Actualización de datos del usuario
+    1. Gestion de clave               5. Retiro rapido cuenta principal
+    2. Consulta de movimientos        6. Retiro
+    3. pagos                          7. Consulta Saldo
+    4. otras operaciones              8. transferencia
+    9. Depositar                      10. Salir
+
+Ejemplo consultar saldo:
+
+    ¿Cual operaciones desea realizar el usuario?: 7
+
+    Este es el saldo 1000.0
+
+Ejemplo retiro:
+
+    ¿Cual operaciones desea realizar el usuario?: 6
+
+    Coloque Valor a Retirar: 200
+
+    Este Es el nuevo Saldo 800.0
+
+Ejemplo depósito:
+
+    ¿Cual operaciones desea realizar el usuario?: 9
+
+    Coloque Valor a Depositar: 500
+
+    Valor depositado Correctamente
+
+------------------------------------------------------------------------
+
+# Autor
+
+**Daniel Elias Alvarez Diaz**
+**Luis mario Suarez Sevilla**
+**Isaias Daniel Cañate Diaz**
