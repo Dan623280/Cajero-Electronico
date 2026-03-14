@@ -271,5 +271,7 @@ Ejemplo depósito:
 # Autor
 
 **Daniel Elias Alvarez Diaz**
-**Luis mario Suarez Sevilla**
+
+**Luis Mario Suarez Sevilla**
+
 **Isaias Daniel Cañate Diaz**
