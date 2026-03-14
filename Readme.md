@@ -1,231 +1,226 @@
-# Cajero Automatico - TechBank Riwi Digital
+ Cajero Electrónico - TechBank Riwi Digital
 
-Este proyecto es una simulación de un **Cajero Automático (ATM)** desarrollado en **Python**, que funciona completamente desde la terminal.
+Este proyecto es una **simulación de un cajero automático (ATM)** desarrollado en Python que funciona completamente desde la terminal.
 
-El sistema permite a los usuarios autenticarse con su **número de cuenta y clave**, y realizar diferentes operaciones bancarias como:
+El usuario puede iniciar sesión con su **número de cuenta y clave**, y realizar diferentes operaciones bancarias como:
 
 - Consultar saldo
 - Retirar dinero
 - Retiro rápido
-- Transferencias
-- Pagos de servicios
-- Depósitos
-- Cambio de clave
-- Consulta de movimientos
-- Actualización de datos
+- Depositar dinero
+- Transferir dinero a otras cuentas
+- Pagar servicios (agua, luz o gas)
+- Consultar historial de movimientos
+- Cambiar su clave
+- Actualizar sus datos
 
-Todo el sistema funciona utilizando **diccionarios en memoria** para simular una base de datos de usuarios.
-
----
-
-# Estructura del proyecto
-
-El proyecto está dividido en varios archivos para organizar mejor el código.
-
-
-Cajero-Electronico
-│
-├── main.py
-├── cajero.py
-├── funciones.py
-├── Dicionario.py
-└── Colores.py
-
+El sistema está diseñado para simular el funcionamiento básico de un cajero automático de forma sencilla desde la consola.
 
 ---
 
-# Archivo principal
+# Cómo descargar el proyecto
 
-El archivo que debe ejecutar el usuario es:
+Primero debes **clonar el repositorio desde GitHub**.
 
+En tu terminal escribe:
+
+```bash
+git clone https://github.com/Dan623280/Cajero-Electronico.git
+
+Luego entra a la carpeta del proyecto:
+
+cd Cajero-Electronico
+Cómo ejecutar el programa
+
+El archivo principal del programa es:
 
 main.py
 
+Para iniciar el cajero automático ejecuta:
 
-Ejecutar en la terminal:
-
-```bash
 python main.py
 
-Este archivo se encarga de:
+El sistema te pedirá número de usuario y clave para iniciar sesión.
 
-Autenticación del usuario
+Usuarios para iniciar sesión
 
-Validación de clave
+Puedes usar cualquiera de los siguientes usuarios de prueba:
 
-Bloqueo de cuenta por intentos fallidos
-
-Acceso al menú del cajero automático
-
-Usuarios de prueba
-
-El sistema ya incluye algunos usuarios registrados en el archivo Dicionario.py.
-
-Puedes usar cualquiera de estos para iniciar sesión:
-
-ID	Número de Usuario	Clave	Nombre
-1001	3224716782	1234	Juan Pérez
-1002	3005716782	5678	María López
-1003	3020715782	9012	Carlos Gómez
-1004	3047197804	3456	Ana Torres
+Número de cuenta	Clave
+3224716782	1234
+3005716782	5678
+3020715782	9012
+3047197804	3456
 
 Ejemplo de inicio de sesión:
 
 Numero de Usuario: 3224716782
 Clave: 1234
-Funcionalidades del Cajero
 
-Una vez autenticado el usuario, el sistema muestra el siguiente menú:
+Si la clave se introduce incorrectamente 3 veces, la cuenta será bloqueada automáticamente.
 
-1. Gestión de clave
+Menú principal del cajero
+
+Después de iniciar sesión correctamente, el cajero mostrará el siguiente menú:
+
+1. Gestion de clave
 2. Consulta de movimientos
-3. Pagos
-4. Otras operaciones
-5. Retiro rápido
+3. pagos
+4. otras operaciones
+5. Retiro rapido cuenta principal
 6. Retiro
-7. Consulta saldo
-8. Transferencia
+7. Consulta Saldo
+8. transferencia
 9. Depositar
 10. Salir
-Descripción de cada archivo
-main.py
 
-Controla el flujo principal del programa.
+Cada opción permite realizar diferentes operaciones bancarias.
 
-Funciones principales:
+Cambiar clave (Gestión de clave)
 
-Autenticación del usuario
+Esta opción permite cambiar la clave de acceso del usuario.
 
-Validación del número de cuenta
+Pasos:
 
-Validación de clave
+Seleccionar la opción 1
 
-Bloqueo del usuario después de 3 intentos fallidos
+Ingresar la clave actual
 
-Acceso al menú del cajero
+Ingresar la nueva clave
 
-cajero.py
+Confirmar la nueva clave
 
-Contiene el menú principal del cajero automático.
+Si ambas claves coinciden, la clave será actualizada.
 
-Desde este archivo se llaman todas las operaciones disponibles para el usuario:
-
-Cambio de clave
-
-Pagos
-
-Transferencias
-
-Retiro rápido
-
-Retiro personalizado
-
-Consulta de saldo
+Esto permite al usuario mejorar la seguridad de su cuenta.
 
 Consulta de movimientos
 
-Depósitos
+Esta opción muestra el historial de operaciones realizadas, como:
 
-funciones.py
+Retiros
 
-Contiene toda la lógica del sistema bancario.
+Transferencias
 
-Entre sus funciones principales:
+Pagos de servicios
 
-Validar número de cuenta
+Esto permite al usuario ver todas las transacciones realizadas desde su cuenta.
 
-Validar clave
+Pagos
 
-Cambiar clave
+Permite pagar servicios básicos directamente desde el cajero.
 
-Consultar saldo
+Opciones disponibles:
 
-Registrar movimientos
+Pagar agua
 
-Realizar transferencias
+Pagar luz
 
-Realizar pagos
+Pagar gas
 
-Realizar depósitos
+El valor pagado se descuenta del saldo disponible.
 
-Retirar dinero
+Otras operaciones
 
-También gestiona:
+Este menú incluye opciones para consultar y actualizar los datos del usuario.
 
-Validación de saldo
+Opciones disponibles:
 
-Límites de retiro
+1. Mostrar datos usuario
+2. Actualizar datos
+3. Regresar
+Actualizar datos
 
-Registro del historial de movimientos
+Dentro de esta sección el usuario puede modificar su información.
 
-Dicionario.py
+Opciones disponibles:
 
-Simula una base de datos de usuarios utilizando un diccionario de Python.
+Cambiar nombre
 
-Cada usuario tiene:
+Permite actualizar el nombre del usuario asociado a la cuenta.
 
-Numero_Cuenta
-Clave
-nombre
-saldo
-movimientos
-Validacion
+Cambiar número de cuenta
 
-Ejemplo de usuario:
+El sistema genera automáticamente un nuevo número de cuenta para el usuario.
 
-"1001": {
-    "Numero_Cuenta": "3224716782",
-    "Clave": "1234",
-    "nombre": "Juan Pérez",
-    "saldo": 1000.0,
-    "movimientos": [],
-    "Validacion": "Activo"
-}
-Colores.py
+Después de confirmar la operación:
 
-Contiene constantes para imprimir texto con colores y estilos en la terminal, usando códigos ANSI.
+Se genera un número de cuenta nuevo
 
-Ejemplo:
+El número anterior deja de funcionar
 
-ROJO
-VERDE
-AZUL
-AMARILLO
-MAGENTA
-CYAN
-NEGRITA
-SUBRAYADO
+Esto simula la actualización de datos bancarios dentro del sistema.
 
-Esto mejora la visualización del programa en consola.
+Retiro rápido
+
+Permite retirar dinero rápidamente con montos predefinidos.
+
+Ejemplos:
+
+20.000
+
+30.000
+
+50.000
+
+100.000
+
+El dinero se descuenta automáticamente del saldo disponible.
+
+Retiro personalizado
+
+Permite ingresar cualquier valor de retiro dentro del límite permitido.
+
+Condiciones:
+
+No puede ser un valor negativo
+
+No puede superar 1.000.000
+
+Debe existir saldo suficiente
+
+Consulta de saldo
+
+Muestra el saldo actual disponible en la cuenta.
+
+Transferencias
+
+Permite enviar dinero a otra cuenta dentro del sistema.
+
+Pasos:
+
+Ingresar el valor a transferir
+
+Ingresar el número de cuenta destino
+
+Confirmar la operación
+
+Si la cuenta existe y hay saldo suficiente, la transferencia se realiza correctamente.
+
+Depositar dinero
+
+Permite agregar dinero a la cuenta.
+
+El sistema suma el valor ingresado al saldo actual del usuario.
+
+Salir del cajero
+
+La opción 10 permite salir del sistema de forma segura.
 
 Características del sistema
 
-✔ Sistema de autenticación
-✔ Bloqueo de usuario después de 3 intentos fallidos
-✔ Registro de historial de movimientos
-✔ Transferencias entre cuentas
-✔ Pagos de servicios (agua, luz, gas)
-✔ Depósitos
-✔ Retiros personalizados
-✔ Retiro rápido
-✔ Uso de colores en consola
-✔ Código modularizado en múltiples archivos
+Autenticación por número de cuenta y clave
 
-Tecnologías utilizadas
+Bloqueo automático después de 3 intentos fallidos
 
-Python
+Registro de movimientos
 
-Diccionarios
+Transferencias entre usuarios
 
-Programación modular
+Pagos de servicios
 
-Control de errores
+Depósitos
 
-Librería colorama para colores en consola
+Retiros rápidos y personalizados
 
-Instalar colorama si no está instalada:
-
-pip install colorama
-Autor
-
-Proyecto desarrollado como práctica de programación en Python para simular el funcionamiento básico de un cajero automático en consola.
+Actualización de datos del usuario
